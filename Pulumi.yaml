@@ -1,4 +1,4 @@
-name: "6866"
+name: "test-deployment"
 description: A minimal Google Cloud TypeScript Pulumi program
 runtime:
   name: nodejs
