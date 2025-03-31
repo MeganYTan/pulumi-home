@@ -1,10 +1,11 @@
-name: "test-deployment"
-description: A minimal Google Cloud TypeScript Pulumi program
+name: test-deployment
+description: A minimal Google Cloud Python Pulumi program
 runtime:
-  name: nodejs
+  name: python
   options:
-    packagemanager: npm
+    toolchain: pip
+    virtualenv: venv
 config:
   pulumi:tags:
     value:
-      pulumi:template: gcp-typescript
+      pulumi:template: gcp-python
