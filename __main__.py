@@ -1,10 +1,17 @@
-"""A Google Cloud Python Pulumi program"""
-
 import pulumi
 from pulumi_gcp import storage
 
-# Create a GCP resource (Storage Bucket)
-bucket = storage.Bucket('my-bucket', location="US")
+# Get current stack
+stack = pulumi.get_stack()
 
-# Export the DNS name of the bucket
-pulumi.export('bucket_name', bucket.url)
+# Use Pulumi config or custom logic for region
+config = pulumi.Config("gcp")
+region = config.require("region")
+
+# Create a regional bucket
+bucket = storage.Bucket(f"{stack}-bucket",
+    location=region,
+    force_destroy=True
+)
+
+pulumi.export("bucket_name", bucket.name)
