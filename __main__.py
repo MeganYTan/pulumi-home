@@ -6,7 +6,7 @@ stack = pulumi.get_stack()
 
 # Use Pulumi config or custom logic for region
 config = pulumi.Config("gcp")
-region = config.require("region")
+region = "us-central1"
 
 # Create a regional bucket
 bucket = storage.Bucket(f"{stack}-bucket",
